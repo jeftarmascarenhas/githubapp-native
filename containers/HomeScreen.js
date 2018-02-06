@@ -15,7 +15,7 @@ export default class HomeScene extends Component {
   };
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Header title="Home"/>
         <InfosGithubUser />
       </View>
