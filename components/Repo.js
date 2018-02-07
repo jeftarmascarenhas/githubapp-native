@@ -18,6 +18,7 @@ export default class Repo extends Component {
         <View style={styles.repoInfo}>
           <Text style={styles.repoTitle}>{this.props.data.title}</Text>
           <Text style={styles.repoAuthor}>{this.props.data.author}</Text>
+          <Text style={styles.repoAuthor}>{this.props.data.stargazers_count}</Text>
         </View>
       </View>
     );

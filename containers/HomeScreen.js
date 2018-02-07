@@ -11,13 +11,18 @@ import InfosGithubUser from '../components/home/InfosGithubUser';
 export default class HomeScene extends Component {
 
   static navigationOptions = {
-    title: 'Home',
+    drawerLabel: 'Home',
+    color: '#fff',
   };
+  menuOpen = () => {
+    this.props.navigation.navigate('DrawerOpen');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Header title="Home"/>
+        <Header title="Home" menu={this.menuOpen} />
         <InfosGithubUser />
+        <Text></Text>
       </View>
     );
   }
@@ -26,6 +31,6 @@ export default class HomeScene extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#202020',
   },
 });

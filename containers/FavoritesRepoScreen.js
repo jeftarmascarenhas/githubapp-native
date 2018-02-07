@@ -21,14 +21,7 @@ export default class FavoritesRepoScene extends Component {
   };
 
   static navigationOptions = {
-    headerTitle: 'Favorites',
-    headerRight: (
-      <Button
-        onPress={() => alert('This is Button')}
-        title="Info"
-        color="#000"
-      />
-    ),
+    drawerLabel: 'Favorites',
   };
 
   async componentDidMount() {
@@ -37,13 +30,14 @@ export default class FavoritesRepoScene extends Component {
   }
 
   addRepo = async (newRepoText) => {
-    const repoCall = await fetch(`http://api.github.com/repos/${newRepoText}`);
+    const repoCall = await fetch(`https://api.github.com/repos/${newRepoText}`);
     const response = await repoCall.json();
     const repository = {
       id: response.id,
       thumbnail: response.owner.avatar_url,
       title: response.name,
       author: response.owner.login,
+      stargazers_count: response.stargazers_count,
     };
 
     this.setState({
@@ -52,14 +46,22 @@ export default class FavoritesRepoScene extends Component {
         ...this.state.repos,
         repository,
       ],
+      newRepoText: '',
     });
     await AsyncStorage.setItem('@AppGithub:repositories', JSON.stringify(this.state.repos)); 
   };
 
+  onChangeNewRepo = (newRepoText) => {
+    this.setState({ newRepoText });
+  }
+  menuOpen = () => {
+    this.props.navigation.navigate('DrawerOpen');
+  }
+
   render() {
     return (
       <View style={styles.container} >
-        <Header title={'Favorites repositories'}>
+        <Header title={'Favorites repositories'} menu={this.menuOpen}>
           <TouchableOpacity onPress={() => {
               this.setState({ modalVisible: true })
             }}>
@@ -73,12 +75,18 @@ export default class FavoritesRepoScene extends Component {
               <Repo
                 key={item.id}
                 data={item}
+                newRepoText={this.state.newRepoText}
               />
             )
           }
         </ScrollView>
         <NewRepoModal
-          onCancel={() => this.setState({ modalVisible: false })}
+          onCancel={() => this.setState({
+            modalVisible: false,
+            newRepoText: '',
+          })}
+          value={this.state.newRepoText}
+          onChangeNewRepo={this.onChangeNewRepo}
           onAdd={this.addRepo}
           visible={this.state.modalVisible}
         />
