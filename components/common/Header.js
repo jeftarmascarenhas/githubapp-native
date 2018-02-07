@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   Platform,
-  Button,
+  TouchableOpacity,
 } from 'react-native';
 
 export default class Header extends Component {
@@ -12,13 +12,15 @@ export default class Header extends Component {
   render() {
     return (
       <View style={styles.header} >
-        {this.props.menu && <Button
-          title="Menu"
-          color="#FFF"
-          onPress={() => this.props.menu()}
-        />}
+        {<TouchableOpacity
+            style={styles.menuOpen}
+            onPress={() => this.props.menu()}
+          >
+            <Text style={styles.menuText} >Menu</Text>
+          </TouchableOpacity>
+        }
         <Text style={styles.headerText} >{this.props.title}</Text>
-        {this.props.children}
+        {this.props.children && this.props.children}
       </View>
     );
   }
@@ -41,5 +43,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FFF',
+  },
+  menuOpen: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+  },
+  menuText: {
+    color:'#FFF',
+    fontSize: 13,
   },
 });

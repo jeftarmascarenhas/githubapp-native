@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  ScrollView,
   StyleSheet
 } from 'react-native';
 
@@ -30,31 +31,35 @@ export default class InfosGithubUser extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.profile}>
-          <Image
-            style={styles.avatar}
-            source={{ uri: 'https://avatars2.githubusercontent.com/u/574887?v=4' }}
-          />
-          <Text style={styles.profileName}>Jeftar Mascarenhas</Text>
-        </View>
-        <View style={styles.wrapper}>
-          <View style={[styles.box, styles.boxBorder]}>
-            <Text style={styles.whiteColor}>Followers</Text>
-            <Text style={styles.whiteColor}>{this.state.followers}</Text>
+        <ScrollView>
+          <View style={styles.profile}>
+            {this.state.thumbnail && <Image
+              style={styles.avatar}
+              source={{ uri: this.state.thumbnail }}
+              />
+            }
+            {this.state.thumbnail && <Text style={styles.profileName}>{this.state.name}</Text>}
+            {!this.state.thumbnail &&  <Text style={styles.profileName}>Conectando ao github...</Text>}
           </View>
-          <View style={styles.box}>
-            <Text style={styles.whiteColor}>Following</Text>
-            <Text style={styles.whiteColor}>{this.state.following}</Text>
-          </View>
-          <View style={[styles.box, styles.boxBorder]}>
-            <Text style={styles.whiteColor}>public_repos</Text>
-            <Text style={styles.whiteColor}>{this.state.public_repos}</Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.whiteColor}>public_repos</Text>
-            <Text style={styles.whiteColor}>{this.state.public_repos}</Text>
-          </View>
-        </View>
+          {this.state.thumbnail && <View style={styles.wrapper}>
+            <View style={[styles.box, styles.boxBorder]}>
+              <Text style={styles.whiteColor}>Followers</Text>
+              <Text style={styles.whiteColor}>{this.state.followers}</Text>
+            </View>
+            <View style={styles.box}>
+              <Text style={styles.whiteColor}>Following</Text>
+              <Text style={styles.whiteColor}>{this.state.following}</Text>
+            </View>
+            <View style={[styles.box, styles.boxBorder]}>
+              <Text style={styles.whiteColor}>public_repos</Text>
+              <Text style={styles.whiteColor}>{this.state.public_repos}</Text>
+            </View>
+            <View style={styles.box}>
+              <Text style={styles.whiteColor}>public_repos</Text>
+              <Text style={styles.whiteColor}>{this.state.public_repos}</Text>
+            </View>
+          </View>}
+        </ScrollView>
       </View>
     );
   }

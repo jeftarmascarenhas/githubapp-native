@@ -7,7 +7,8 @@ import {
   ScrollView,
   Platform,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  Alert
 } from 'react-native';
 import Header from '../components/common/Header';
 import Repo from '../components/Repo';
@@ -29,8 +30,8 @@ export default class FavoritesRepoScene extends Component {
     this.setState({ repos });
   }
 
-  addRepo = async (newRepoText) => {
-    const repoCall = await fetch(`https://api.github.com/repos/${newRepoText}`);
+  addRepo = async () => {
+    const repoCall = await fetch(`https://api.github.com/repos/${this.state.newRepoText}`);
     const response = await repoCall.json();
     const repository = {
       id: response.id,
@@ -39,6 +40,7 @@ export default class FavoritesRepoScene extends Component {
       author: response.owner.login,
       stargazers_count: response.stargazers_count,
     };
+    
 
     this.setState({
       modalVisible: false,
@@ -50,6 +52,12 @@ export default class FavoritesRepoScene extends Component {
     });
     await AsyncStorage.setItem('@AppGithub:repositories', JSON.stringify(this.state.repos)); 
   };
+
+  closeModal = () => {
+    this.setState({
+      visible: false,
+    });
+  }
 
   onChangeNewRepo = (newRepoText) => {
     this.setState({ newRepoText });

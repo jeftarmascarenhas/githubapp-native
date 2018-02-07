@@ -20,7 +20,9 @@ export default class HomeScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="Home" menu={this.menuOpen} />
+        <Header title="Home"
+          menu={this.menuOpen}
+        />
         <InfosGithubUser />
         <Text></Text>
       </View>

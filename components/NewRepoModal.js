@@ -11,7 +11,12 @@ import {
 export default class NewRepoModal extends Component {
   render() {
     return (
-      <Modal animationType="fade" transparent={true} visible={this.props.visible} >
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={this.props.visible}
+        onRequestClose={() => this.props.closeModal()}
+      >
         <View style={styles.modalContainer} >
           <View style={styles.boxContainer} >
             <Text>Adicionar Repositório</Text>
