@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   header: {
     height: (Platform.OS === 'ios') ? 70 : 50,
     paddingTop: (Platform.OS === 'ios') ? 20 : 0,
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#191919',
     borderBottomWidth: 1,
     borderColor: '#f1d303',
     justifyContent: 'center',
