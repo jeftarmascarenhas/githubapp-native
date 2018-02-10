@@ -6,6 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
+const iconFollwers = (<Icon name="rocket" size={30} color="#900" />);
 
 export default class FormGetGithubUser extends Component {
   render() {
@@ -23,15 +26,21 @@ export default class FormGetGithubUser extends Component {
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => alert('Title', 'Message')}
+            onPress={this.props.getInfosGithubUser}
           >
-            <Text style={styles.textButton} >Pesquisar</Text>
+            <Text style={styles.textButton} >Pesquisar {iconFollwers} </Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
 }
+
+FormGetGithubUser.propTypes = {
+  newUserText: PropTypes.string,
+  onChangeUserText: PropTypes.func,
+  getInfosGithubUser: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
   containerForm: {
