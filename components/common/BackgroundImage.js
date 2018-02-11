@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
-  Image,  
+  ImageBackground
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class BackgroundImage extends Component {
 
   render() {
+    const  { style } = this.props;
     return (
-      <Image
-        source={require('../../images/bg-user.jpg')}
+      <ImageBackground
+        style={[{...style}, styles.backgroundImage]}
+        source={require('./bg-user.jpg')}
       >
         {this.props.children}
-      </Image>
+      </ImageBackground>
     );
   }
+}
+
+BackgroundImage.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.element,
 }
 
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'cover',
   },
 });

@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   ScrollView,
-  Platform,
   TouchableOpacity,
   AsyncStorage,
-  Alert
 } from 'react-native';
+import PropTypes from  'prop-types';
 import Header from '../components/common/Header';
 import Repo from '../components/Repo';
 import NewRepoModal from '../components/NewRepoModal';
@@ -39,6 +37,7 @@ export default class FavoritesRepoScene extends Component {
       title: response.name,
       author: response.owner.login,
       stargazers_count: response.stargazers_count,
+      forks_count: response.forks_count,
     };
     
 
@@ -103,10 +102,16 @@ export default class FavoritesRepoScene extends Component {
   }
 }
 
+FavoritesRepoScene.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#191919',
   },
   headerButton: {
     fontSize: 24,
@@ -114,6 +119,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   repoList: {
-    padding: 20,
+    padding: 10,
   },
 })

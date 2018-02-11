@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class NewRepoModal extends Component {
   render() {
@@ -19,9 +20,10 @@ export default class NewRepoModal extends Component {
       >
         <View style={styles.modalContainer} >
           <View style={styles.boxContainer} >
-            <Text>Adicionar Repositório</Text>
+            <Text style={styles.textModal}>Adicionar Repositório</Text>
             <TextInput
               autoFocus
+              placeholderTextColor="#FFF"
               autoCapitalize="none"
               style={styles.boxInput}
               underlineColorAndroid="rgba(0,0,0,0)"
@@ -52,6 +54,15 @@ export default class NewRepoModal extends Component {
   }
 }
 
+NewRepoModal.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  closeModal: PropTypes.func,
+  onChangeNewRepo: PropTypes.func.isRequired,
+  newRepoText: PropTypes.string,
+  visible: PropTypes.bool,
+};
+
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
@@ -61,8 +72,7 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     padding: 20,
-    backgroundColor: '#FFF',
-    borderRadius: 10,
+    backgroundColor: '#444',
     alignItems: 'center',
     width: 280,
   },
@@ -71,13 +81,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingVertical: 0,
     paddingHorizontal: 20,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#DDD',
     height: 40,
     borderRadius: 3,
   },
   buttonContainer: {
-    marginTop: 10,
+    marginTop: 30,
     height: 40,
     flexDirection: 'row',
   },
@@ -88,11 +98,14 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   cancelButton: {
-    backgroundColor: '#E25F5F',
+    backgroundColor: '#999',
     marginRight: 5,
   },
   submitButton: {
-    backgroundColor: '#70BD85',
+    backgroundColor: '#f1d303',
+  },
+  textModal: {
+    color: '#FFF',
   },
   textButton: {
     fontWeight: 'bold',

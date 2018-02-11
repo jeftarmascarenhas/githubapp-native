@@ -4,25 +4,39 @@ import {
   StyleSheet,
   Text,
   Image,
-  PixelRatio
+  PixelRatio,
+  TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
+const iconRemove = (<Icon name="md-trash" size={25} color="#999" />);
 
 export default class Repo extends Component {
   render() {
+    const  { data } = this.props;
     return (
       <View style={styles.repo} >
         <Image
           style={styles.repoImage}
-          source={{ uri: this.props.data.thumbnail }}
+          source={{ uri: data.thumbnail }}
         />
         <View style={styles.repoInfo}>
-          <Text style={styles.repoTitle}>{this.props.data.title}</Text>
-          <Text style={styles.repoAuthor}>{this.props.data.author}</Text>
-          <Text style={styles.repoAuthor}>{this.props.data.stargazers_count}</Text>
+          <Text style={styles.repoTitle}>{data.title}</Text>
+          <Text style={styles.repoAuthor}>{data.author}</Text>
+          <Text style={styles.repoAuthor}>
+            Stars: {data.stargazers_count} Forks: {data.forks_count}
+          </Text>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => alert('Não Implementados.')}>{iconRemove}</TouchableOpacity>
         </View>
       </View>
     );
   }
+}
+
+Repo.propTypes = {
+  data: PropTypes.object
 }
 
 const styles = StyleSheet.create({  
@@ -31,9 +45,10 @@ const styles = StyleSheet.create({
     borderBottomColor: 'rgba(0,0,0,0.2)',
     borderBottomWidth: 1 / PixelRatio.get(),
     marginBottom: 20,
-    borderRadius: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#222',
   },
   repoImage: {
     height: 50,
@@ -45,10 +60,10 @@ const styles = StyleSheet.create({
   },
   repoTitle: {
     fontWeight: 'bold',
-    color: '#333',
+    color: '#FFF',
   },
   repoAuthor: {
     fontSize: 12,
-    color: '#999',
+    color: '#FFF',
   },
 })

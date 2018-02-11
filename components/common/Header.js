@@ -6,6 +6,9 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
+import PropTypes from  'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
+const iconMenu = (<Icon name="ios-menu-outline" size={30} color="#FFF" />);
 
 export default class Header extends Component {
 
@@ -16,7 +19,7 @@ export default class Header extends Component {
             style={styles.menuOpen}
             onPress={() => this.props.menu()}
           >
-            <Text style={styles.menuText} >Menu</Text>
+            <Text style={styles.menuText} >{iconMenu}</Text>
           </TouchableOpacity>
         }
         <Text style={styles.headerText} >{this.props.title}</Text>
@@ -26,6 +29,12 @@ export default class Header extends Component {
   }
 }
 
+Header.propTypes = {
+  menu: PropTypes.func,
+  title: PropTypes.string,
+  children: PropTypes.element,
+};
+
 const styles = StyleSheet.create({
   header: {
     height: (Platform.OS === 'ios') ? 70 : 50,
@@ -33,7 +42,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#191919',
     borderBottomWidth: 1,
     borderColor: '#f1d303',
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
