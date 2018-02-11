@@ -10,10 +10,8 @@
 `react-native run-io or react-native run-android`
 
 ## Images of App
-![Home]('https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/home.jpeg')
+![Home](https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/home.jpeg)
 
-![Favorite]('https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/favorite.jpeg')
+![Favorite](https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/favorite.jpeg)
 
-![Modal]('https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/modal.jpeg')
-
-![Banana](http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif)
+![Modal](https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/modal.jpeg)
