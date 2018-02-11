@@ -8,3 +8,6 @@
 
 ** how to start app
 `react-native run-io or react-native run-android`
+
+## Images of App
+[Home]('./images/home.jpg')
