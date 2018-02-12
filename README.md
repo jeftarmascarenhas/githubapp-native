@@ -1,6 +1,6 @@
 ## Github App is my study on React Native
 
-** Is app was create with react-native
+** This app was created using react-native and react-native-cli
 `npm install -g react-native-cli`
 
 ** how to install
@@ -9,7 +9,7 @@
 ** how to start app
 `react-native run-io or react-native run-android`
 
-## Images of App
+## Some images of this App bellow
 ![Home](https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/home.jpeg)
 
 ![Favorite](https://raw.githubusercontent.com/jeftarmascarenhas/githubapp-native/master/images/favorite.jpeg)
